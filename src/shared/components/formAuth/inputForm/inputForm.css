@@ -1,0 +1,15 @@
+.inputForm__input{
+    background-color: #fff;
+    color: black;
+    font-weight: 700;
+    border: none;
+    width: 300px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.6); /* sombra solo abajo */
+}
+
+.inputForm__input:focus {
+  outline: none; 
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.8); /* sombra más intensa al hacer focus */
+}

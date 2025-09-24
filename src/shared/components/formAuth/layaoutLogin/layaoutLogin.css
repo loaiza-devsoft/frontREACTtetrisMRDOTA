@@ -1,0 +1,137 @@
+.layaoutLogin {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layaoutLogin__container {
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    background-color: rgb(255, 191, 0);
+    border-radius: 20px;
+    position: relative; /* importante para que la img absoluta se posicione respecto a este contenedor */
+}
+
+.layaoutLogin__contenido {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.layaoutLogin__imagen {
+    flex: 1;
+
+}
+
+.layaoutLogin__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* recorta o ajusta la imagen para llenar sin deformar */
+}
+
+.layaoutLogin__h1 {
+    color: black;
+    font-weight: 900;
+}
+
+
+.layaoutLogin__links {
+    display: flex;
+}
+
+.layaoutLogin__olvidarPassword {
+    font-size: 12px;
+    text-align: center;
+    flex: 1;
+    border-top: 2px solid black;
+    padding: 4px;
+}
+
+.layaoutLogin__yaTieneCuenta {
+    font-size: 12px;
+    text-align: center;
+    flex: 1;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    padding: 4px;
+}
+
+.layaoutLogin__social {
+    display: flex;
+    gap: 30px;
+}
+
+.layaoutLogin__inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+
+.layaoutLogin__icono{
+    position: absolute; /* se superpone */
+    top: -30px;             /* arriba */
+    left: -30px;            /* izquierda */
+    width: 100px;        /* tamaño de la imagen */
+    height: 100px;
+    object-fit: contain; /* mantiene proporción */
+    z-index: 10;        /* asegura que esté por encima de otros elementos */
+    transform: rotate(-20deg); /* rota -20 grados */
+
+
+}
+
+
+
+
+
+/* MEDIA QUERY: Tablets y móviles */
+/* MEDIA QUERY: Tablets y móviles */
+/* MEDIA QUERY: Tablets y móviles */
+@media (max-width: 900px) {
+    .layaoutLogin__container {
+        flex-direction: column; /* apila contenido e imagen */
+        height: auto;           /* que crezca según contenido */
+        width: 90%;             /* más ancho en móviles */
+        max-width: 400px;       /* opcional: para no exagerar */
+        padding: 30px 20px;     /* más espacio dentro del contenedor */
+    }
+
+    .layaoutLogin__imagen {
+        display: none; /* desaparece la imagen grande */
+    }
+
+    .layaoutLogin__contenido {
+        width: 100%;
+        gap: 25px;   /* más espacio entre elementos */
+        padding: 20px 0; /* un poco de espacio arriba y abajo */
+    }
+
+    .layaoutLogin__inputs {
+        max-width: 100%;
+        gap: 20px; /* más separación entre inputs */
+    }
+
+    .layaoutLogin__social {
+        gap: 15px; /* más separación entre botones sociales */
+        justify-content: center;
+    }
+
+    .layaoutLogin__links {
+        flex-direction: column;
+        gap: 10px; /* separación vertical entre links */
+    }
+}
+

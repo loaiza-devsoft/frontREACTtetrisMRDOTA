@@ -14,10 +14,12 @@ export function useRegister() {
             setLoading(true);
             setError(null);
             const respuesta = await registrarUsuario(usuario);
+            alert("Usuario agregado.")
             return respuesta;
 
         }catch(err: any){
             setError(err.message || "Error al registrar usuario")
+            alert("INVALIDO")
         }finally{
             setLoading(false);
         }

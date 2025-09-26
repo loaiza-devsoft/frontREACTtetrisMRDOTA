@@ -1,3 +1,5 @@
+
+
 .layaoutLogin {
     width: 100%;
     min-height: 100vh;
@@ -10,24 +12,25 @@
     width: 1000px;
     height: 500px;
     display: flex;
-    background-color: rgb(255, 191, 0);
+    background-color: rgb(255, 187, 0);
     border-radius: 20px;
     position: relative; /* importante para que la img absoluta se posicione respecto a este contenedor */
 }
 
-.layaoutLogin__contenido {
-    padding-top: 30px;
+.layaoutLogin__form {
+    padding-top: 40px;
     padding-bottom: 30px;
     flex: 1;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 
 }
 
+
 .layaoutLogin__imagen {
     flex: 1;
+    
 
 }
 
@@ -39,13 +42,15 @@
 }
 
 .layaoutLogin__h1 {
-    color: black;
-    font-weight: 900;
+    margin-bottom: 70px;
 }
 
 
 .layaoutLogin__links {
     display: flex;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
 }
 
 .layaoutLogin__olvidarPassword {
@@ -65,9 +70,15 @@
     padding: 4px;
 }
 
+.layaoutLogin__a{
+    text-decoration: none;
+    color: black;
+}
+
 .layaoutLogin__social {
     display: flex;
     gap: 30px;
+    margin-top: 15px;
 }
 
 .layaoutLogin__inputs {
@@ -79,6 +90,10 @@
 
 }
 
+.layaoutLogin__buttonSubmit{
+    margin-top: auto;
+}
+
 
 .layaoutLogin__icono{
     position: absolute; /* se superpone */
@@ -88,7 +103,7 @@
     height: 100px;
     object-fit: contain; /* mantiene proporción */
     z-index: 10;        /* asegura que esté por encima de otros elementos */
-    transform: rotate(-20deg); /* rota -20 grados */
+    transform: rotate(-30deg); /* rota -20 grados */
 
 
 }
@@ -101,37 +116,54 @@
 /* MEDIA QUERY: Tablets y móviles */
 /* MEDIA QUERY: Tablets y móviles */
 @media (max-width: 900px) {
+
     .layaoutLogin__container {
-        flex-direction: column; /* apila contenido e imagen */
-        height: auto;           /* que crezca según contenido */
-        width: 90%;             /* más ancho en móviles */
-        max-width: 400px;       /* opcional: para no exagerar */
-        padding: 30px 20px;     /* más espacio dentro del contenedor */
+        flex-direction: column;
+        height: 500px;
+        width: 90%;
+        max-width: 420px;
+        padding: 30px 20px;
     }
 
-    .layaoutLogin__imagen {
-        display: none; /* desaparece la imagen grande */
-    }
 
-    .layaoutLogin__contenido {
+    .layaoutLogin__form {
         width: 100%;
-        gap: 25px;   /* más espacio entre elementos */
-        padding: 20px 0; /* un poco de espacio arriba y abajo */
+        padding: 20px 0;
+        align-items: center;
     }
 
-    .layaoutLogin__inputs {
-        max-width: 100%;
-        gap: 20px; /* más separación entre inputs */
+    .layaoutLogin__h1 {
+        margin-bottom: 40px;
+        font-size: 32px;
     }
 
-    .layaoutLogin__social {
-        gap: 15px; /* más separación entre botones sociales */
-        justify-content: center;
-    }
+
 
     .layaoutLogin__links {
+        margin-top: 35px;   /* más espacio respecto a los botones sociales */
         flex-direction: column;
-        gap: 10px; /* separación vertical entre links */
+        gap: 8px;           /* espacio vertical entre los dos links */
+        width: 100%;
+        max-width: 300px;
+        align-items: center; /* centrados */
+    }
+
+    
+
+    .layaoutLogin__imagen{
+        display: none;
+    }
+
+    .layaoutLogin__olvidarPassword,
+    .layaoutLogin__yaTieneCuenta {
+        border: none;         /* quitamos bordes que se ven raros en mobile */
+        padding: 0;           /* menos padding */
+        font-size: 13px;      /* un poco más legibles */
+    }
+
+    .layaoutLogin__a {
+        color: black;
+        text-decoration: underline; /* subrayado clásico en mobile */
     }
 }
 

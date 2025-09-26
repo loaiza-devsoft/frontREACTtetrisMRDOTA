@@ -7,7 +7,7 @@ export const registrarUsuario = async(usuario: Usuario) =>{
     return  respuesta.data
 }
 
-export const loginUsuario = async(correo: string, password: string) =>{
-    const respuesta = await axiosClient.post(endPoints.auth.login, {correo, password})
+export const loginUsuario = async(email: string, password: string) =>{
+    const respuesta = await axiosClient.post(endPoints.auth.login, {email, password})
     return respuesta.data
 }

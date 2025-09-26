@@ -1,16 +1,15 @@
 import React from 'react'
 import "./inputForm.css"
 
-interface Props{
-  type: string,
-  placeholder: string
+interface Props extends React.InputHTMLAttributes<HTMLInputElement>{
+  
 }
 
 export default function InputForm(props: Props) {
 
-  const {type, placeholder} = props;
+  const {...rest} = props;
 
   return (
-    <input className='inputForm__input' type={type} placeholder={placeholder} />
+    <input className='inputForm__input' {...rest} />
   )
 }

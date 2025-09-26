@@ -1,0 +1,74 @@
+.loginForm__form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm__inputs{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.loginForm__links{
+    display: flex;
+}
+
+.loginForm__social{
+    display: flex;
+    gap: 30px;
+}
+
+.loginForm__links{
+    border-top: 2px solid black;
+    width: 300px;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.loginForm__a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.loginForm__olvidoPassword{
+    flex: 1;
+    border-right: 2px solid black;
+    padding: 4px;
+}
+
+.loginForm__yaTieneCuenta{
+    flex: 1;
+    padding: 4px;
+    text-align: right;
+}
+
+.loginForm__social{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.loginForm__p{
+    color: red;
+    margin-bottom: 20px;
+}
+
+.loginForm__buttonSubmit{
+    text-align: center;
+    margin-top: auto;
+}
+
+.loginForm__titulo{
+    width: 300px;
+    text-align: center;
+    margin-bottom: 60px;
+}

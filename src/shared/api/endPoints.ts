@@ -7,5 +7,6 @@ export const endPoints = {
     auth: {
         login: "/api/auth/login",
         register: "/api/auth/register",
+        authGoogle: "/api/auth/google"
     },
 }

@@ -10,7 +10,7 @@ src/
 │       ├── model/
 │       │   └── types.ts          # Tipado de Usuario
 │       └── api/
-│           └── usuarioApi.ts     # API de usuario
+│           └── usuarioApi.ts     # CRUD
 │
 ├── features/                     # Funcionalidades específicas (casos de uso)
 │   └── auth/

@@ -16,7 +16,6 @@ export default function RegisterForm() {
     const [form, setForm] = useState<Usuario>({
         nombre: "",
         email:"",
-        telefono:"3333333",
         password:"",
         rolId: 2
     })
@@ -24,7 +23,7 @@ export default function RegisterForm() {
     
     const [confirmarPassword, setConfirmarPassword] = useState("")
 
-    const {nombre, email, telefono, password} = form;
+    const {nombre, email, password} = form;
 
 
 
@@ -50,7 +49,7 @@ export default function RegisterForm() {
 
         setForm({nombre: "",
         email:"",
-        telefono:"",
+        password:""
         });
 
         setConfirmarPassword("");

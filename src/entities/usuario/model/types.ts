@@ -6,10 +6,14 @@ export interface Usuario{
     imagenUsuario?: string,
     telefono?: string,
     rolId?: number,
-    rol?: Rol
+
 }
 
-export interface Rol{
-    idRol: number,
-    nombreRol: string
+
+export interface LoginResponse{
+    token: string,
+    expiresIn: number,
+    usuario: Usuario,
+    timestamp: string
+
 }

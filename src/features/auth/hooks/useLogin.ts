@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { loginUsuario } from "../api/authApi";
+import { LoginResponse } from "../../../entities/usuario/model/types";
 
 export function useLogin(){
 
@@ -11,8 +12,9 @@ export function useLogin(){
         try{
             setLoading(true);
             setError(null);
-            const respuesta = await loginUsuario(email, password);
-            console.log(respuesta);
+            const respuesta: LoginResponse = await loginUsuario(email, password);
+            localStorage.setItem("token", respuesta.token);
+            localStorage.setItem("usuario", JSON.stringify(respuesta.usuario));
             alert("USUARIO ENCONTRADO");
             return respuesta;
             

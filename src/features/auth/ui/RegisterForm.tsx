@@ -11,31 +11,31 @@ import { Link } from 'react-router-dom';
 
 export default function RegisterForm() {
 
-    const {error, loading, register} = useRegister()
+    const { error, loading, register } = useRegister()
 
     const [form, setForm] = useState<Usuario>({
         nombre: "",
-        email:"",
-        password:"",
+        email: "",
+        password: "",
         rolId: 2
     })
 
-    
+
     const [confirmarPassword, setConfirmarPassword] = useState("")
 
-    const {nombre, email, password} = form;
+    const { nombre, email, password } = form;
 
 
 
-    const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        setForm({...form, [e.target.name]: e.target.value});
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
 
-    const onSubmit = async (e:React.FormEvent<HTMLFormElement>) =>{
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        
-        
+
+
 
         if (password !== confirmarPassword) {
             alert("Las contraseñas no coinciden");
@@ -47,9 +47,10 @@ export default function RegisterForm() {
         await register(form);
 
 
-        setForm({nombre: "",
-        email:"",
-        password:""
+        setForm({
+            nombre: "",
+            email: "",
+            password: ""
         });
 
         setConfirmarPassword("");
@@ -61,14 +62,14 @@ export default function RegisterForm() {
         <form className='registerForm__form' onSubmit={onSubmit} action="">
 
             <div className='registerForm__titulo'>
-                <TituloForm textTitulo='REGISTRO'/>
+                <TituloForm textTitulo='REGISTRO' />
             </div>
 
             <div className="registerForm__inputs">
-                <InputForm name='nombre'  placeholder='NOMBRE USUARIO' required onChange={onInputChange} value={nombre}/>
+                <InputForm name='nombre' placeholder='NOMBRE USUARIO' required onChange={onInputChange} value={nombre} />
                 <InputForm name='email' type='email' placeholder='CORREO' required onChange={onInputChange} value={email} />
-                <InputForm name='password' type='password' placeholder='CONTRASEÑA' required onChange={onInputChange} value={password}/>
-                <InputForm name='confirmarPassword' type='password' placeholder='CONFIRMAR PASSWORD' required onChange={(e)=>setConfirmarPassword(e.target.value)} value={confirmarPassword}/>
+                <InputForm name='password' type='password' placeholder='CONTRASEÑA' required onChange={onInputChange} value={password} />
+                <InputForm name='confirmarPassword' type='password' placeholder='CONFIRMAR PASSWORD' required onChange={(e) => setConfirmarPassword(e.target.value)} value={confirmarPassword} />
             </div>
 
             <div className="registerForm__links">
@@ -82,13 +83,16 @@ export default function RegisterForm() {
             </div>
 
             <div className="registerForm__social">
-                <ButtonFacebook/>
-                <ButtonGmail/>
+                <ButtonGmail />
+            </div>
+
+            <div className="registerForm__separator">
+                <span>or</span>
             </div>
 
             <div className="registerForm__buttonSubmit">
                 {error && <p className='registerForm__p'>{error}</p>}
-                <ButtonSubmit textButton={loading ? "CARGANDO...": "REGISTRARSE"}/>
+                <ButtonSubmit textButton={loading ? "CARGANDO..." : "REGISTRARSE"} />
             </div>
         </form>
     )

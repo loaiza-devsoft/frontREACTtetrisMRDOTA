@@ -1,4 +1,6 @@
-import React from 'react'
+
+//FUNCIONA CON BOTON CON ESTILO DE GOOGLE
+
 import { useGoogleLogin } from '../../../../../features/auth/hooks/useGoogleLogin'
 import { GoogleLogin } from '@react-oauth/google'
 
@@ -19,18 +21,23 @@ export default function ButtonGmail() {
       }}
 
       theme='outline'
-      text='signin'
+      text='continue_with'
       size='large'
-      shape='circle'
+      shape='pill'
 
   
-      // useOneTap  // aparece el cuadro a la derecha al cargar la pagina.
+      // useOneTap  // aparece el cuadro a la derecha al cargar la pagina
 
 
     />
   )
 }
 
+
+
+
+
+//BOTON SOLO
 
 
 

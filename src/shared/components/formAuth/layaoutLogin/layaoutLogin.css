@@ -76,10 +76,14 @@
 }
 
 .layaoutLogin__social {
-    display: flex;
-    gap: 30px;
-    margin-top: 15px;
+    margin-top: 20px;
+    width: 300px;
+    border: 2px solid red;
+
 }
+
+
+
 
 .layaoutLogin__inputs {
     display: flex;
@@ -91,7 +95,7 @@
 }
 
 .layaoutLogin__buttonSubmit{
-    margin-top: auto;
+    margin-top: 0px;
 }
 
 
@@ -107,6 +111,40 @@
 
 
 }
+
+
+
+
+
+
+
+
+.layaoutLogin__separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0; /* espacio arriba y abajo */
+    color: #333;    /* color del texto */
+    font-size: 14px;
+    font-weight: 500;
+    width: 300px;   /* que coincida con el ancho de los botones */
+}
+
+.layaoutLogin__separator::before,
+.layaoutLogin__separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #666; /* línea gris */
+}
+
+.layaoutLogin__separator:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.layaoutLogin__separator:not(:empty)::after {
+    margin-left: .75em;
+}
+
 
 
 

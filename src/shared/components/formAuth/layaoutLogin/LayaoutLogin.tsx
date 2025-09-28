@@ -15,7 +15,7 @@ export default function LayaoutLogin() {
                 <img className='layaoutLogin__icono' src={iconoBurger}></img>
                 <form className="layaoutLogin__form">
                     <div className='layaoutLogin__h1'>
-                        <TituloForm textTitulo='LOGIN'/>
+                        <TituloForm textTitulo='LOGIN' />
                     </div>
                     <div className="layaoutLogin__inputs">
                         <InputForm placeholder='CORREO' type='email' />
@@ -29,14 +29,22 @@ export default function LayaoutLogin() {
                             <a className='layaoutLogin__a' href="">¿Aun no tienes una cuenta?</a>
                         </div>
                     </div>
+
+                    
+
                     <div className="layaoutLogin__social">
-                        <ButtonFacebook />
                         <ButtonGmail />
                     </div>
+
+                    <div className="layaoutLogin__separator">
+                        <span>or</span>
+                    </div>
+
                     <div className="layaoutLogin__buttonSubmit">
                         <ButtonSubmit textButton='INICIAR SESION' type='submit' />
                     </div>
                     
+
                 </form>
                 <div className="layaoutLogin__imagen">
                     <img className='layaoutLogin__img' src={burgerGrande} alt="" />

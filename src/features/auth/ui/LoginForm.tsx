@@ -54,7 +54,7 @@ export default function LoginForm() {
 
             <div className="loginForm__links">
                 <div className="loginForm__olvidoPassword">
-                    <a className='loginForm__a' href="">¿Olvidaste tu contraseña?</a>
+                    <Link className='loginForm__a' to="/">¿Olvidaste tu contraseña?</Link>
                 </div>
                 <div className="loginForm__yaTieneCuenta">
                     <Link className='loginForm__a' to="/register">¿Aun no tienes una cuenta?</Link>
@@ -62,8 +62,11 @@ export default function LoginForm() {
             </div>
 
             <div className="loginForm__social">
-                <ButtonFacebook />
-                <ButtonGmail />
+                <ButtonGmail  />
+            </div>
+
+            <div className="loginForm__separator">
+                <span>or</span>
             </div>
 
             

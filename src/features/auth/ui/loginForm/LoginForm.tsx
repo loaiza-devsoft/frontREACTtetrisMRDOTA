@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { useLogin } from '../hooks/useLogin'
-import TituloForm from '../../../shared/components/formAuth/tituloForm/TituloForm'
+import { useLogin } from '../../hooks/useLogin'
+import TituloForm from '../../../../shared/components/formAuth/tituloForm/TituloForm'
 
 
 import "./loginForm.css"
-import InputForm from '../../../shared/components/formAuth/inputForm/InputForm'
-import ButtonFacebook from '../../../shared/components/formAuth/buttonSocial/buttonFacebook/ButtonFacebook'
-import ButtonGmail from '../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail'
-import ButtonSubmit from '../../../shared/components/formAuth/buttonSubmit/ButtonSubmit'
+import InputForm from '../../../../shared/components/formAuth/inputForm/InputForm'
+import ButtonGmail from '../../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail'
+import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit'
 import { Link } from 'react-router-dom'
 
 export default function LoginForm() {
@@ -28,8 +27,10 @@ export default function LoginForm() {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        
 
         await login(email, password);
+        
         setForm({
             email: "",
             password: ""
@@ -54,7 +55,7 @@ export default function LoginForm() {
 
             <div className="loginForm__links">
                 <div className="loginForm__olvidoPassword">
-                    <Link className='loginForm__a' to="/">¿Olvidaste tu contraseña?</Link>
+                    <Link className='loginForm__a' to="/forgot-password">¿Olvidaste tu contraseña?</Link>
                 </div>
                 <div className="loginForm__yaTieneCuenta">
                     <Link className='loginForm__a' to="/register">¿Aun no tienes una cuenta?</Link>

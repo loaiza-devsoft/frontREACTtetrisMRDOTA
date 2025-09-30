@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterForm from '../../features/auth/ui/RegisterForm'
+import RegisterForm from '../../features/auth/ui/registerForm/RegisterForm'
 import "./registerPage.css"
 import burgerRegister from "../../assets/burgerRegister.png"
 import burgerIcono from "../../assets/iconoBURGER.webp"

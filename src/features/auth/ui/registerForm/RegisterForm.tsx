@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { useRegister } from '../hooks/useRegister'
-import { Usuario } from '../../../entities/usuario/model/types';
+import { useRegister } from '../../hooks/useRegister'
+import { Usuario } from '../../../../entities/usuario/model/types';
 import "./registerForm.css"
-import TituloForm from '../../../shared/components/formAuth/tituloForm/TituloForm';
-import InputForm from '../../../shared/components/formAuth/inputForm/InputForm';
-import ButtonFacebook from '../../../shared/components/formAuth/buttonSocial/buttonFacebook/ButtonFacebook';
-import ButtonGmail from '../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail';
-import ButtonSubmit from '../../../shared/components/formAuth/buttonSubmit/ButtonSubmit';
+import TituloForm from '../../../../shared/components/formAuth/tituloForm/TituloForm';
+import InputForm from '../../../../shared/components/formAuth/inputForm/InputForm';
+import ButtonGmail from '../../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail';
+import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit';
 import { Link } from 'react-router-dom';
 
 export default function RegisterForm() {
@@ -35,7 +34,7 @@ export default function RegisterForm() {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-
+        
 
         if (password !== confirmarPassword) {
             alert("Las contraseñas no coinciden");
@@ -46,7 +45,6 @@ export default function RegisterForm() {
 
         await register(form);
 
-
         setForm({
             nombre: "",
             email: "",
@@ -54,6 +52,7 @@ export default function RegisterForm() {
         });
 
         setConfirmarPassword("");
+        
     }
 
 
@@ -92,7 +91,7 @@ export default function RegisterForm() {
 
             <div className="registerForm__buttonSubmit">
                 {error && <p className='registerForm__p'>{error}</p>}
-                <ButtonSubmit textButton={loading ? "CARGANDO..." : "REGISTRARSE"} />
+                <ButtonSubmit disabled={loading} textButton={loading ? "CARGANDO..." : "REGISTRARSE"} />
             </div>
         </form>
     )

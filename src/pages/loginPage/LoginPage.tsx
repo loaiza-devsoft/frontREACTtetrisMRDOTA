@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from '../../features/auth/ui/LoginForm'
+import LoginForm from '../../features/auth/ui/loginForm/LoginForm'
 import "./loginPage.css"
 import burgerGrande from "../../assets/burgerLogin.png"
 import brugerIcono from "../../assets/iconoBURGER.webp"

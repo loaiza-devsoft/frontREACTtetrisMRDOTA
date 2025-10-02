@@ -8,10 +8,15 @@ import InputForm from '../../../../shared/components/formAuth/inputForm/InputFor
 import ButtonGmail from '../../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail'
 import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit'
 import { Link } from 'react-router-dom'
+import { ErrorAlert } from '../../../../shared/components/alerts/errorAlert/ErrorAlert'
+import SuccessAlert from '../../../../shared/components/alerts/successAlert/SuccessAlert'
 
 export default function LoginForm() {
 
     const { loading, error, login } = useLogin()
+
+    const [alertaError, setAlertaError] = useState<string | null>(null);
+    const [alertaSuccess, setAlertaSuccess] = useState<string | null>(null);
 
     const [form, setForm] = useState({
         email: "",
@@ -29,7 +34,22 @@ export default function LoginForm() {
 
         
 
-        await login(email, password);
+        const respuesta = await login(email, password);
+
+        if (respuesta?.token) {
+            setAlertaSuccess(null);
+            setTimeout(()=>{
+                setAlertaSuccess("Login exitoso.")
+            },0)
+        }
+        else{
+            setAlertaError(null);
+            setTimeout(()=>{
+                setAlertaError("Credenciales invalidas");
+            }, 0)
+            return;
+        }
+
         
         setForm({
             email: "",
@@ -42,6 +62,10 @@ export default function LoginForm() {
 
     return (
         <form onSubmit={onSubmit} className='loginForm__form' action="">
+
+
+            {alertaError && <ErrorAlert mensaje={alertaError}/>}
+            {alertaSuccess && <SuccessAlert mensaje={alertaSuccess}/>}
 
             <div className="loginForm__titulo">
                 <TituloForm textTitulo='LOGIN' />

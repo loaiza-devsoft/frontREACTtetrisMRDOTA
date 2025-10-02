@@ -4,11 +4,16 @@ import TituloForm from '../../../../shared/components/formAuth/tituloForm/Titulo
 import InputForm from '../../../../shared/components/formAuth/inputForm/InputForm'
 import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit'
 import { useForgotPassword } from '../../hooks/useForgotPassword'
+import CorreoEnviado from '../../../../shared/components/formAuth/correoEnviado/CorreoEnviado'
+import { ErrorAlert } from '../../../../shared/components/alerts/errorAlert/ErrorAlert'
 
 export default function ForgotPasswordForm() {
 
     const { loading, error, forgotPassword } = useForgotPassword()
 
+    const [correoEnviado, setCorreoEnviado] = useState(false);
+
+    const [alertaError, setAlertaError] = useState<string | null>(null);
 
     const [form, setForm] = useState({
         email: ""
@@ -25,7 +30,15 @@ export default function ForgotPasswordForm() {
         const respuesta = await forgotPassword(email);
 
         if(respuesta?.status === 200){
-            alert("Correo mandado con el link");
+           setCorreoEnviado(true);
+           return;
+        }
+        else{
+            setAlertaError(null);
+            setTimeout(()=>{
+                setAlertaError("Correo invalido.");
+            }, 0)
+
         }
 
         setForm({
@@ -36,6 +49,8 @@ export default function ForgotPasswordForm() {
 
     return (
         <form onSubmit={onSubmit} className='forgotPasswordForm__form' action="">
+
+            {alertaError && <ErrorAlert mensaje={alertaError}/>}
 
             <div className="forgotPasswordForm__titulo">
                 <TituloForm textTitulo='¿Olvido la contraseña?' />
@@ -50,13 +65,16 @@ export default function ForgotPasswordForm() {
             </div>
 
             <div className="forgotPasswordForm__inputs">
-                <InputForm name='email' placeholder='introduzca el correo electronico' onChange={onInputChange} value={email} />
+                <InputForm disabled={correoEnviado} name='email' placeholder='introduzca el correo electronico' onChange={onInputChange} value={email} required />
             </div>
 
+            {correoEnviado ? <CorreoEnviado correo={email} /> : null}
+
+            {!correoEnviado ? 
             <div className="forgotPasswordForm__buttonSubmit">
                 {error && <p className='forgotPasswirdForm__error'>{error}</p>}
                 <ButtonSubmit disabled={loading} textButton={loading ? "Enviando correo..." : "Enviar correo"} />
-            </div>
+            </div>: null}
 
 
         </form>

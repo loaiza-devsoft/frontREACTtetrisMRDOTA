@@ -6,21 +6,28 @@ import TituloForm from '../../../../shared/components/formAuth/tituloForm/Titulo
 import InputForm from '../../../../shared/components/formAuth/inputForm/InputForm';
 import ButtonGmail from '../../../../shared/components/formAuth/buttonSocial/buttonGmail/ButtonGmail';
 import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ErrorAlert } from '../../../../shared/components/alerts/errorAlert/ErrorAlert';
+import SuccessAlert from '../../../../shared/components/alerts/successAlert/SuccessAlert';
 
 export default function RegisterForm() {
 
-    const { error, loading, register } = useRegister()
+    const { error, loading, register } = useRegister();
+
+    const navegador = useNavigate();
 
     const [form, setForm] = useState<Usuario>({
         nombre: "",
         email: "",
         password: "",
         rolId: 2
-    })
+    });
+
+    const [alertaError, setAlertaError] = useState<string | null>(null);
+    const [alertaSuccess, setAlertaSuccess] = useState<string | null>(null);
 
 
-    const [confirmarPassword, setConfirmarPassword] = useState("")
+    const [confirmarPassword, setConfirmarPassword] = useState("");
 
     const { nombre, email, password } = form;
 
@@ -34,31 +41,61 @@ export default function RegisterForm() {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        
+
 
         if (password !== confirmarPassword) {
-            alert("Las contraseñas no coinciden");
-            return
+            setAlertaError(null);
+            setTimeout(() => {
+                setAlertaError("Las contraseñas ingresadas no coinciden.");
+            }, 0);
+            return;
+        }
+
+
+        if (password.length < 8) {
+            setAlertaError(null);
+            setTimeout(() => {
+                setAlertaError("La contrasña debe tener al menos 8 digitos.");
+            }, 0)
+            return;
         }
 
 
 
-        await register(form);
+        const respuesta = await register(form);
 
-        setForm({
-            nombre: "",
-            email: "",
-            password: ""
-        });
+        if (respuesta?.status === 201) {
 
-        setConfirmarPassword("");
-        
+
+            setAlertaSuccess(null);
+            setTimeout(() => {
+                setAlertaSuccess("Usuario registrado exitosamente.");
+            }, 0)
+        }
+
+
+
+
+        setTimeout(() => {
+            setForm({
+                nombre: "",
+                email: "",
+                password: ""
+            });
+            setConfirmarPassword("");
+            navegador("/login");
+        }, 2000)
+
+
+
     }
 
 
 
     return (
         <form className='registerForm__form' onSubmit={onSubmit} action="">
+            {alertaError && <ErrorAlert mensaje={alertaError} />}
+            {alertaSuccess && <SuccessAlert mensaje={alertaSuccess} />}
 
             <div className='registerForm__titulo'>
                 <TituloForm textTitulo='REGISTRO' />

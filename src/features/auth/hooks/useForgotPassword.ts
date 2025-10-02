@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { forgotPasswordUsuario } from "../api/authApi";
 
-export function useForgotPassword(){
-    
+export function useForgotPassword() {
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const forgotPassword = async (email: string)=>{
+    const forgotPassword = async (email: string) => {
 
-        try{
+        try {
             setLoading(true);
             setError(null);
             const respuesta = await forgotPasswordUsuario(email)
             return respuesta;
-        }catch(err: any){
+        } catch (err: any) {
             setError(err.message || "Error inesperado")
-        }finally{
+        } finally {
             setLoading(false);
         }
     }
 
-    return {loading, error, forgotPassword}
+    return { loading, error, forgotPassword }
 }

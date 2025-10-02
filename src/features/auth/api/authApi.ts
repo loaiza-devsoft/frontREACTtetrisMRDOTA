@@ -4,7 +4,7 @@ import { endPoints } from "../../../shared/api/endPoints";
 
 export const registrarUsuario = async(usuario: Usuario) =>{
     const respuesta = await axiosClient.post(endPoints.auth.register, usuario)
-    return  respuesta.data;
+    return  respuesta;
 }
 
 export const loginUsuario = async(email: string, password: string) =>{

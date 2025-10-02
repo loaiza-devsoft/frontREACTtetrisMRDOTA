@@ -15,7 +15,6 @@ export function useLogin(){
             const respuesta: LoginResponse = await loginUsuario(email, password);
             localStorage.setItem("token", respuesta.token);
             localStorage.setItem("usuario", JSON.stringify(respuesta.usuario));
-            alert("USUARIO ENCONTRADO");
             return respuesta;
             
             
@@ -23,7 +22,6 @@ export function useLogin(){
 
         }catch(err: any){
             setError(err.message || "Error al loguearte");
-            alert("INVALIDO");
 
         }finally{
             setLoading(false);

@@ -5,6 +5,8 @@ import InputForm from '../../../../shared/components/formAuth/inputForm/InputFor
 import ButtonSubmit from '../../../../shared/components/formAuth/buttonSubmit/ButtonSubmit'
 import { useResetPassword } from '../../hooks/useResetPassword'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { ErrorAlert } from '../../../../shared/components/alerts/errorAlert/ErrorAlert'
+import SuccessAlert from '../../../../shared/components/alerts/successAlert/SuccessAlert'
 
 export default function ResetPasswordForm() {
 
@@ -15,38 +17,68 @@ export default function ResetPasswordForm() {
 
     const navegador = useNavigate();
 
+    const [alertaError, setAlertaError] = useState<string | null>(null);
+    const [alertaSuccess, setAlertaSuccess] = useState<string | null>(null);
+
     const [nuevaPassword, setNuevaPassword] = useState("");
     const [confirmarPassword, setConfirmarPassword] = useState("");
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        
+
 
         if (nuevaPassword != confirmarPassword) {
-            return alert("Las contraseñas no coinciden");
+            setAlertaError(null);
+            setTimeout(() => {
+                setAlertaError("Las contraseñas no coinciden.");
+            }, 0)
+            return;
+        }
+
+        if (nuevaPassword.length < 8) {
+            setAlertaError(null);
+            setTimeout(() => {
+                setAlertaError("La contraseña debe tener al menos 8 digitos.");
+            }, 0)
+            return;
         }
 
         const respuesta = await resetPassword(token, nuevaPassword);
 
         if (respuesta?.status === 200) {
-            alert("La constraseña fue cambiada con exito, ahora inicie sesion");
-            return navegador("/login");
+            setAlertaSuccess(null);
+            setTimeout(() => {
+                setAlertaSuccess("La contraseña se cambio con exito.")
+            }, 0)
+
         }
         else {
-            alert("El token expiro o es invalido");
-            
+            setAlertaError(null);
+            setTimeout(() => {
+                setAlertaError("El link expiro.");
+            }, 0)
+
+            return;
+
         }
 
-        setNuevaPassword("");
-        setConfirmarPassword("");
+        setTimeout(() => {
+            setNuevaPassword("");
+            setConfirmarPassword("");
+            navegador("/login");
 
-        
+        }, 2000)
+
+
     }
 
 
     return (
         <form onSubmit={onSubmit} className='resetPasswordForm__form' action="">
+
+            {alertaError && <ErrorAlert mensaje={alertaError} />}
+            {alertaSuccess && <SuccessAlert mensaje={alertaSuccess} />}
 
             <div className="resetPasswordForm__titulo"><TituloForm textTitulo='Cambia tu contraseña' /></div>
 
@@ -57,11 +89,11 @@ export default function ResetPasswordForm() {
             <div className="resetPasswordForm__inputs">
                 <label className='resetPasswordForm__label' htmlFor="">Contraseña nueva</label>
 
-                <InputForm name='nuevaPassword' placeholder='ingresa tu nueva contraseña' onChange={(e) => setNuevaPassword(e.target.value)} value={nuevaPassword} />
+                <InputForm name='nuevaPassword' type='password' required placeholder='ingresa tu nueva contraseña' onChange={(e) => setNuevaPassword(e.target.value)} value={nuevaPassword} />
 
                 <label className='resetPasswordForm__label' htmlFor="">Confirmar contraseña</label>
 
-                <InputForm name='confirmarPassword' placeholder='confirma tu nueva contraseña' onChange={(e) => setConfirmarPassword(e.target.value)} value={confirmarPassword} />
+                <InputForm name='confirmarPassword' type='password' required placeholder='confirma tu nueva contraseña' onChange={(e) => setConfirmarPassword(e.target.value)} value={confirmarPassword} />
             </div>
 
             <div className="resetPasswordForm__buttonSubmit">

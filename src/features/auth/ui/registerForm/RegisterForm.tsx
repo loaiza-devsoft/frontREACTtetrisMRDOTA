@@ -17,7 +17,7 @@ export default function RegisterForm() {
     const navegador = useNavigate();
 
     const [form, setForm] = useState<Usuario>({
-        nombre: "",
+        userName: "",
         email: "",
         password: "",
         rolId: 2
@@ -29,7 +29,7 @@ export default function RegisterForm() {
 
     const [confirmarPassword, setConfirmarPassword] = useState("");
 
-    const { nombre, email, password } = form;
+    const { userName, email, password } = form;
 
 
 
@@ -78,7 +78,7 @@ export default function RegisterForm() {
 
         setTimeout(() => {
             setForm({
-                nombre: "",
+                userName: "",
                 email: "",
                 password: ""
             });
@@ -102,7 +102,7 @@ export default function RegisterForm() {
             </div>
 
             <div className="registerForm__inputs">
-                <InputForm name='nombre' placeholder='NOMBRE USUARIO' required onChange={onInputChange} value={nombre} />
+                <InputForm name='userName' placeholder='NOMBRE USUARIO' required onChange={onInputChange} value={userName} />
                 <InputForm name='email' type='email' placeholder='CORREO' required onChange={onInputChange} value={email} />
                 <InputForm name='password' type='password' placeholder='CONTRASEÑA' required onChange={onInputChange} value={password} />
                 <InputForm name='confirmarPassword' type='password' placeholder='CONFIRMAR PASSWORD' required onChange={(e) => setConfirmarPassword(e.target.value)} value={confirmarPassword} />

@@ -22,7 +22,7 @@ export const forgotPasswordUsuario = async (email: string)=>{
     return respuesta;
 }
 
-export const resetPasswordUsuario = async(token: string, nuevaPassword : string) =>{
-    const respuesta = await axiosClient.post(endPoints.auth.resetPassword, {token, nuevaPassword});
+export const resetPasswordUsuario = async(token: string, newPassword : string) =>{
+    const respuesta = await axiosClient.post(endPoints.auth.resetPassword, {token, newPassword});
     return respuesta;
 }
